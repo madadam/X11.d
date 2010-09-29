@@ -13,10 +13,6 @@
 
 module X11.Xlib;
 
-version(build) {
-  pragma(link, "X11");
-}
-
 public import X11.X;
 
 const int XlibSpecificationRelease=6;

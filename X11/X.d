@@ -8,6 +8,8 @@
 
 module X11.X;
 
+pragma(lib, "X11");
+
 const uint X_PROTOCOL=11;		/* current protocol version */
 const uint X_PROTOCOL_REVISION=0;		/* current minor version */
 
