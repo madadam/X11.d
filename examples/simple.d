@@ -1,5 +1,8 @@
 // This an example for the X11 binding.
-// Build with: dsss build
+//
+// Build/run with rdmd:
+//   rdmd -I.. simple.d 
+
 
 module simple;
 
