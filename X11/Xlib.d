@@ -20,8 +20,9 @@ version = X_HAVE_UTF8_STRING;
 
 typedef void* XPointer;
 typedef int Status ;
-enum Bool:int{False,True}; //xlib boolean is int type, D bool is only byte
-enum QueueMode{QueuedAlready,QueuedAfterReading,QueuedAfterFlush};
+typedef int Bool;
+enum:Bool {False, True}; //xlib boolean is int type, D bool is only byte
+enum QueueMode {QueuedAlready, QueuedAfterReading, QueuedAfterFlush};
 
 /+
 TODO Nested struc or union verify
@@ -1755,24 +1756,20 @@ extern int XScreenNumberOfScreen(
     Screen*		/* screen */
 );
 
-typedef int (*XErrorHandler) (	    /* WARNING, this type not in Xlib spec */
-    Display*		/* display */,
-    XErrorEvent*	/* error_event */
-);
+// WARNING, this type not in Xlib spec
+typedef int function(Display*		  /* display */,
+                     XErrorEvent*	/* error_event */) XErrorHandler;
 
 extern XErrorHandler XSetErrorHandler (
     XErrorHandler	/* handler */
 );
 
-
-typedef int (*XIOErrorHandler) (    /* WARNING, this type not in Xlib spec */
-    Display*		/* display */
-);
+// WARNING, this type not in Xlib spec
+typedef int function(Display*		/* display */) XIOErrorHandler;
 
 extern XIOErrorHandler XSetIOErrorHandler (
     XIOErrorHandler	/* handler */
 );
-
 
 extern XPixmapFormatValues *XListPixmapFormats(
     Display*		/* display */,
