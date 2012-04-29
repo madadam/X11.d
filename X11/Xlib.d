@@ -15,12 +15,13 @@ module X11.Xlib;
 
 public import X11.X;
 
+
 const int XlibSpecificationRelease=6;
 version = X_HAVE_UTF8_STRING;
 
-typedef void* XPointer;
-typedef int Status ;
-typedef int Bool;
+alias void* XPointer;
+alias int Status ;
+alias int Bool;
 enum:Bool {False, True}; //xlib boolean is int type, D bool is only byte
 enum QueueMode {QueuedAlready, QueuedAfterReading, QueuedAfterFlush};
 
@@ -145,7 +146,7 @@ struct XGCValues
 	byte dashes;
 };
 
-typedef void* GC;
+alias void* GC;
 
 /*
  * Visual structure; contains information about colormapping possible.
@@ -464,7 +465,7 @@ struct Display
 	/* there is more to this structure, but it is private to Xlib */
 }
 
-typedef Display *_XPrivDisplay;
+alias Display *_XPrivDisplay;
 struct XrmHashBucketRec{};
 
 
@@ -487,8 +488,8 @@ struct XKeyEvent
 	uint keycode;	/* detail */
 	Bool same_screen;	/* same screen flag */
 };
-typedef XKeyEvent XKeyPressedEvent;
-typedef XKeyEvent XKeyReleasedEvent;
+alias XKeyEvent XKeyPressedEvent;
+alias XKeyEvent XKeyReleasedEvent;
 
 struct XButtonEvent
 {
@@ -506,8 +507,8 @@ struct XButtonEvent
 	uint button;	/* detail */
 	Bool same_screen;	/* same screen flag */
 };
-typedef XButtonEvent XButtonPressedEvent;
-typedef XButtonEvent XButtonReleasedEvent;
+alias XButtonEvent XButtonPressedEvent;
+alias XButtonEvent XButtonReleasedEvent;
 
 struct XMotionEvent{
 	int type;		/* of event */
@@ -524,7 +525,7 @@ struct XMotionEvent{
 	byte is_hint;		/* detail */
 	Bool same_screen;	/* same screen flag */
 };
-typedef XMotionEvent XPointerMovedEvent;
+alias XMotionEvent XPointerMovedEvent;
 
 struct XCrossingEvent{
 	int type;		/* of event */
@@ -547,8 +548,8 @@ struct XCrossingEvent{
 	Bool focus;		/* Boolean focus */
 	KeyOrButtonMask state;	/* key or button mask */
 };
-typedef XCrossingEvent XEnterWindowEvent;
-typedef XCrossingEvent XLeaveWindowEvent;
+alias XCrossingEvent XEnterWindowEvent;
+alias XCrossingEvent XLeaveWindowEvent;
 
 struct XFocusChangeEvent{
 	int type;		/* FocusIn or FocusOut */
@@ -565,8 +566,8 @@ struct XFocusChangeEvent{
 	 * NotifyPointerRoot, NotifyDetailNone
 	 */
 };
-typedef XFocusChangeEvent XFocusInEvent;
-typedef XFocusChangeEvent XFocusOutEvent;
+alias XFocusChangeEvent XFocusInEvent;
+alias XFocusChangeEvent XFocusOutEvent;
 
 /* generated on EnterWindow and FocusIn  when KeyMapState selected */
 struct XKeymapEvent
@@ -1006,14 +1007,14 @@ struct XFontSetExtents{
 };
 
 /* unused:
-typedef void (*XOMProc)();
+alias void (*XOMProc)();
  */
 
 struct _XOM{}
 struct _XOC{}
-typedef _XOM *XOM;
-typedef _XOC *XOC;
-typedef _XOC *XFontSet;
+alias _XOM *XOM;
+alias _XOC *XOC;
+alias _XOC *XFontSet;
 struct XmbTextItem{
     byte		*chars;
     int			nchars;
@@ -1069,23 +1070,23 @@ struct XOMFontInfo{
 
 struct _XIM{}
 struct _XIC{}
-typedef _XIM *XIM;
-typedef _XIC *XIC;
+alias _XIM *XIM;
+alias _XIC *XIC;
 
 
-typedef void function(
+alias void function(
     XIM,
     XPointer,
     XPointer
 ) XIMProc;
 
-typedef Bool function(
+alias Bool function(
     XIC,
     XPointer,
     XPointer
 )XICProc;
 
-typedef void function(
+alias void function(
     Display*,
     XPointer,
     XPointer
@@ -1160,7 +1161,7 @@ const int XLookupKeySym=		3;
 const int XLookupBoth	=	4;
 
 
-typedef void *XVaNestedList;
+alias void *XVaNestedList;
 
 struct XIMCallback{
     XPointer client_data;
@@ -1235,7 +1236,7 @@ struct XIMStringConversionText {
     };
 };
 
-typedef	ushort	XIMStringConversionPosition;
+alias	ushort	XIMStringConversionPosition;
 
 enum XIMStringConversionType:ushort
 {
@@ -1757,7 +1758,7 @@ extern int XScreenNumberOfScreen(
 );
 
 // WARNING, this type not in Xlib spec
-typedef int function(Display*		  /* display */,
+alias int function(Display*		  /* display */,
                      XErrorEvent*	/* error_event */) XErrorHandler;
 
 extern XErrorHandler XSetErrorHandler (
@@ -1765,7 +1766,7 @@ extern XErrorHandler XSetErrorHandler (
 );
 
 // WARNING, this type not in Xlib spec
-typedef int function(Display*		/* display */) XIOErrorHandler;
+alias int function(Display*		/* display */) XIOErrorHandler;
 
 extern XIOErrorHandler XSetIOErrorHandler (
     XIOErrorHandler	/* handler */
@@ -3875,7 +3876,7 @@ extern Bool XUnregisterIMInstantiateCallback(
     XPointer			/* client_data */
 );
 
-typedef void function(
+alias void function(
     Display*			/* dpy */,
     XPointer			/* client_data */,
     int				/* fd */,
