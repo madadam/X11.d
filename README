@@ -5,3 +5,5 @@ This is a binding for Xlib for D language (version 2).
 
 It is extracted from the bindings project (http://www.dsource.org/projects/bindings). Original credit goes to Teissier Sylvere (sligor@free.fr).
 
+=====
+Modified by Alex Herrmann

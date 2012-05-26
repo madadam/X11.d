@@ -5,6 +5,7 @@
 */
 
 module X11.Xatom;
+
 import X11.X;
 
 immutable Atom XA_PRIMARY = 1;

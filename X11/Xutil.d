@@ -50,7 +50,7 @@ SOFTWARE.
 
 module X11.Xutil;
 
-import X11.Xlib;
+import X11.X;
 // import X11.keysym;
 
 /*
