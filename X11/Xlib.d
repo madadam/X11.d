@@ -29,60 +29,59 @@ enum QueueMode {QueuedAlready, QueuedAfterReading, QueuedAfterFlush};
 TODO Nested struc or union verify
 +/
 
-int		ConnectionNumber(Display *dpy) 	{return dpy.fd;}
-Window	RootWindow(Display *dpy,int scr) 	{return ScreenOfDisplay(dpy,scr).root;}
-int		DefaultScreen(Display *dpy) 		{return dpy.default_screen;}
-Window	DefaultRootWindow(Display *dpy) 	{return ScreenOfDisplay(dpy,DefaultScreen(dpy)).root;}
-Visual*	DefaultVisual(Display *dpy,int scr) {return ScreenOfDisplay(dpy,scr).root_visual;}
-GC		DefaultGC(Display *dpy,int scr) 	{return ScreenOfDisplay(dpy,scr).default_gc;}
-uint	BlackPixel(Display *dpy,int scr) 	{return ScreenOfDisplay(dpy,scr).black_pixel;}
-uint	WhitePixel(Display *dpy,int scr) 	{return ScreenOfDisplay(dpy,scr).white_pixel;}
-uint	AllPlanes()							{return 0xFFFFFFFF;}
-int		QLength(Display *dpy) 				{return dpy.qlen;}
-int		DisplayWidth(Display *dpy,int scr) 	{return ScreenOfDisplay(dpy,scr).width;}
-int		DisplayHeight(Display *dpy,int scr) {return ScreenOfDisplay(dpy,scr).height;}
-int		DisplayWidthMM(Display *dpy,int scr){return ScreenOfDisplay(dpy,scr).mwidth;}
-int		DisplayHeightMM(Display *dpy,int scr){return ScreenOfDisplay(dpy,scr).mheight;}
-int		DisplayPlanes(Display *dpy,int scr) {return ScreenOfDisplay(dpy,scr).root_depth;}
-int		DisplayCells(Display *dpy,int scr) 	{return DefaultVisual(dpy,scr).map_entries;}
-int		ScreenCount(Display *dpy) 			{return dpy.nscreens;}
-char*	ServerVendor(Display *dpy) 			{return dpy.vendor;}
-int		ProtocolVersion(Display *dpy) 		{return dpy.proto_major_version;}
-int		ProtocolRevision(Display *dpy) 		{return dpy.proto_minor_version;}
-int		VendorRelease(Display *dpy) 			{return dpy.release;}
-char*	DisplayString(Display *dpy) 			{return dpy.display_name;}
-int		DefaultDepth(Display *dpy,int scr) 	{return ScreenOfDisplay(dpy,scr).root_depth;}
-Colormap DefaultColormap(Display *dpy,int scr){return ScreenOfDisplay(dpy,scr).cmap;}
-int		BitmapUnit(Display *dpy) 			{return dpy.bitmap_unit;}
-int		BitmapBitOrder(Display *dpy) 		{return dpy.bitmap_bit_order;}
-int		BitmapPad(Display *dpy) 			{return dpy.bitmap_pad;}
-int		ImageByteOrder(Display *dpy) 		{return dpy.byte_order;}
-uint	NextRequest(Display *dpy)			{return dpy.request + 1;}
-
-uint	LastKnownRequestProcessed(Display *dpy)	{return dpy.last_request_read;}
+int		ConnectionNumber()(Displayz *dpy)			{return dpy.fd;}
+Window	RootWindow()(Display *dpy,int scr)			{return ScreenOfDisplay(dpy,scr).root;}
+int		DefaultScreen()(Display *dpy)				{return dpy.default_screen;}
+Window	DefaultRootWindow()(Display *dpy)			{return ScreenOfDisplay(dpy,DefaultScreen(dpy)).root;}
+Visual*	DefaultVisual()(Display *dpy,int scr)		{return ScreenOfDisplay(dpy,scr).root_visual;}
+GC		DefaultGC()(Display *dpy,int scr)			{return ScreenOfDisplay(dpy,scr).default_gc;}
+uint	BlackPixel()(Display *dpy,int scr)			{return ScreenOfDisplay(dpy,scr).black_pixel;}
+uint	WhitePixel()(Display *dpy,int scr)			{return ScreenOfDisplay(dpy,scr).white_pixel;}
+uint	AllPlanes()()								{return 0xFFFFFFFF;}
+int		QLength()(Display *dpy)						{return dpy.qlen;}
+int		DisplayWidth()(Display *dpy,int scr)		{return ScreenOfDisplay(dpy,scr).width;}
+int		DisplayHeight()(Display *dpy,int scr)		{return ScreenOfDisplay(dpy,scr).height;}
+int		DisplayWidthMM()(Display *dpy,int scr)		{return ScreenOfDisplay(dpy,scr).mwidth;}
+int		DisplayHeightMM()(Display *dpy,int scr)		{return ScreenOfDisplay(dpy,scr).mheight;}
+int		DisplayPlanes()(Display *dpy,int scr)		{return ScreenOfDisplay(dpy,scr).root_depth;}
+int		DisplayCells()(Display *dpy,int scr)	 	{return DefaultVisual(dpy,scr).map_entries;}
+int		ScreenCount()(Display *dpy)					{return dpy.nscreens;}
+char*	ServerVendor()(Display *dpy)				{return dpy.vendor;}
+int		ProtocolVersion()(Display *dpy)				{return dpy.proto_major_version;}
+int		ProtocolRevision()(Display *dpy)			{return dpy.proto_minor_version;}
+int		VendorRelease()(Display *dpy)				{return dpy.release;}
+char*	DisplayString()(Display *dpy)				{return dpy.display_name;}
+int		DefaultDepth()(Display *dpy,int scr)		{return ScreenOfDisplay(dpy,scr).root_depth;}
+Colormap DefaultColormap()(Display *dpy,int scr)	{return ScreenOfDisplay(dpy,scr).cmap;}
+int		BitmapUnit()(Display *dpy)					{return dpy.bitmap_unit;}
+int		BitmapBitOrder()(Display *dpy)				{return dpy.bitmap_bit_order;}
+int		BitmapPad()(Display *dpy)					{return dpy.bitmap_pad;}
+int		ImageByteOrder()(Display *dpy)				{return dpy.byte_order;}
+uint	NextRequest()(Display *dpy)					{return dpy.request + 1;}
+uint	LastKnownRequestProcessed()(Display *dpy)	{return dpy.last_request_read;}
 
 /* macros for screen oriented applications (toolkit) */
-Screen*	ScreenOfDisplay(Display *dpy,int scr)	{return &dpy.screens[scr];}
-Screen*	DefaultScreenOfDisplay(Display *dpy) {return ScreenOfDisplay(dpy,DefaultScreen(dpy));}
-Display* DisplayOfScreen(Screen s)			{return s.display;}
-Window	RootWindowOfScreen(Screen s)		{return s.root;}
-uint 	BlackPixelOfScreen(Screen s)		{return s.black_pixel;}
-uint 	WhitePixelOfScreen(Screen s)		{return s.white_pixel;}
-Colormap DefaultColormapOfScreen(Screen s)	{return s.cmap;}
-int 	DefaultDepthOfScreen(Screen s)		{return s.root_depth;}
-GC		DefaultGCOfScreen(Screen s)		{return s.default_gc;}
-Visual*	DefaultVisualOfScreen(Screen s)	{return s.root_visual;}
-int		WidthOfScreen(Screen s)			{return s.width;}
-int		HeightOfScreen(Screen s)		{return s.height;}
-int		WidthMMOfScreen(Screen s)		{return s.mwidth;}
-int		HeightMMOfScreen(Screen s)		{return s.mheight;}
-int		PlanesOfScreen(Screen s)		{return s.root_depth;}
-int 	CellsOfScreen(Screen s)			{return DefaultVisualOfScreen(s).map_entries;}
-int		MinCmapsOfScreen(Screen s)		{return s.min_maps;}
-int		MaxCmapsOfScreen(Screen s)		{return s.max_maps;}
-Bool	DoesSaveUnders(Screen s)		{return s.save_unders;}
-int 	DoesBackingStore(Screen s)		{return s.backing_store;}
-uint	EventMaskOfScreen(Screen s)		{return s.root_input_mask;}
+Screen*	ScreenOfDisplay()(Display *dpy,int scr)	{return &dpy.screens[scr];}
+Screen*	DefaultScreenOfDisplay()(Display *dpy)	{return ScreenOfDisplay(dpy,DefaultScreen(dpy));}
+Display* DisplayOfScreen()(Screen s)			{return s.display;}
+Window	RootWindowOfScreen()(Screen s)			{return s.root;}
+uint 	BlackPixelOfScreen()(Screen s)			{return s.black_pixel;}
+uint 	WhitePixelOfScreen()(Screen s)			{return s.white_pixel;}
+Colormap DefaultColormapOfScreen()(Screen s)	{return s.cmap;}
+int 	DefaultDepthOfScreen()(Screen s)		{return s.root_depth;}
+GC		DefaultGCOfScreen()(Screen s)			{return s.default_gc;}
+Visual*	DefaultVisualOfScreen()(Screen s)		{return s.root_visual;}
+int		WidthOfScreen()(Screen s)				{return s.width;}
+int		HeightOfScreen()(Screen s)				{return s.height;}
+int		WidthMMOfScreen()(Screen s)				{return s.mwidth;}
+int		HeightMMOfScreen()(Screen s)			{return s.mheight;}
+int		PlanesOfScreen()(Screen s)				{return s.root_depth;}
+int 	CellsOfScreen()(Screen s)				{return DefaultVisualOfScreen(s).map_entries;}
+int		MinCmapsOfScreen()(Screen s)			{return s.min_maps;}
+int		MaxCmapsOfScreen()(Screen s)			{return s.max_maps;}
+Bool	DoesSaveUnders()(Screen s)				{return s.save_unders;}
+int 	DoesBackingStore()(Screen s)			{return s.backing_store;}
+uint	EventMaskOfScreen()(Screen s)			{return s.root_input_mask;}
 
 
 
@@ -919,7 +918,7 @@ union XEvent{
 };
 
 
-uint XAllocID(Display* dpy) {return dpy.resource_alloc(dpy);}
+uint XAllocID()(Display* dpy) {return dpy.resource_alloc(dpy);}
 
 
 /*
