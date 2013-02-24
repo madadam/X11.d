@@ -1,10 +1,19 @@
-include $(ME)
+DC = dmd -c $(INCS)
+DLINK = dmd $(LIBS)
 
-WU=..
+INCS = -I..
+LIBS = -L-lX11
+
+RM = rm
+
+%.o: %.d 
+	 $(DC) $(<)
+
 all: simple
 
-_LINKFLAGS=-L-L$(WU)/X11 -L-lX11d -L-lX11
-
-_OCLEAN+=simple
 simple: simple.o
-	$(DC) $(_LINKFLAGS) $<
+	$(DLINK) $<
+
+clean:
+	$(RM) *.o simple
+
